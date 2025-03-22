@@ -1,0 +1,82 @@
+Name: Sahana Naik
+Date: 23/09/2024
+Description:A steganography project involves hiding secret data inside an image file, typically using the least significant 
+            bit (LSB) technique.The project includes two main functions: encoding (hiding data) and decoding (retrieving data).
+            A struct, like `EncodeInfo`, stores information about the image and secret files. During encoding, the project reads 
+            the source image's pixel data and embeds the secret data by altering the LSBs of pixels, which doesn't visibly affect 
+            the image. It first encodes a magic string, followed by the size and contents of the secret file. The modified image 
+            is saved as a new image. In decoding, the process reverses, extracting the hidden data by reading the LSBs and verifying
+            the presence of the magic string.
+
+Encoding:
+
+Test case 1:
+ 
+input: ./a.out -e beautiful.bmp secret.txt 
+
+output: 
+Encoding CLA data copied
+Enter the magic string: #*
+width = 1024
+height = 768
+Calculated capacity: 42
+Header copied
+Encoding successfull!!
+
+Test case 2:
+
+input: ./a.out -e beautiful.bmp 
+
+output:
+Invalid no.of arguments!!
+CLA should be ./a.out -e .bmp file .c.txt file .bmp file(optional)
+
+Test case 3:
+
+input:  ./a.out -f
+
+output:
+Invalid arguments!
+give input
+ ./a.out -e .... for encoding
+ ./a.out -d ..... for decodingunsupported
+
+ Test case 4:
+
+ input: ./a.out -e beautiful.bmp secret.txt image.bmp
+
+ output: 
+ Encoding CLA data copied
+Enter the magic string: #*
+width = 1024
+height = 768
+Calculated capacity: 42
+Encoding successfull!!
+
+Decoding
+
+Test case1:
+
+input: ./a.out -d stego.bmp 
+
+output:
+Decoding CLA data copied
+Enter the magic string: #*
+Decoding successfull!!
+
+Test case 2:
+
+input: ./a.out -d stego.bmp output.txt
+
+output:
+Decoding CLA data copied
+Enter the magic string: #*
+Decoding successfull!!
+
+Test case 3:
+
+input: ./a.out -d 
+
+output : 
+Invalid no.of arguments!!
+CLA should be ./a.out -d .bmp file .c.txt file(optional)
